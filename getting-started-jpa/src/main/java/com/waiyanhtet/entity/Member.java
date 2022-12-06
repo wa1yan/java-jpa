@@ -4,26 +4,26 @@ import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(
-		name="MEMBER_TBL", 
-		indexes = {
-					@Index(columnList = "role")
-				  },
-		uniqueConstraints = {
-				@UniqueConstraint(columnNames = {
-						"email"
-				})
-		}
+		name="MEMBER_TBL"
 	)
+@SecondaryTable(name = "LOGIN_INFO", indexes = {
+		@Index(columnList = "loginId")
+})
+@SecondaryTable(name = "CONTACT_INFO", uniqueConstraints = {
+		@UniqueConstraint(columnNames = {"email"})
+})
 public class Member implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,6 +32,12 @@ public class Member implements Serializable {
 	@GeneratedValue(strategy = IDENTITY)
 	private int id;
 	private String name;
+	
+	@Column(table = "LOGIN_INFO")
+	private String loginId;
+	@Column(table = "LOGIN_INFO")
+	private String password;
+	@Column(table = "LOGIN_INFO")
 	private Role role;
 
 	@Embedded
