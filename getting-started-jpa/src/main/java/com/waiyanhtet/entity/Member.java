@@ -8,8 +8,22 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(
+		name="MEMBER_TBL", 
+		indexes = {
+					@Index(columnList = "role")
+				  },
+		uniqueConstraints = {
+				@UniqueConstraint(columnNames = {
+						"email"
+				})
+		}
+	)
 public class Member implements Serializable {
 
 	private static final long serialVersionUID = 1L;
