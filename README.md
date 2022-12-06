@@ -13,9 +13,30 @@
 
 ## Entity Manager
   ### Create entity manager factory (emf) from Persistence
-         - var emf = Persistence.createEntityManagerFactory("name");
+         var emf = Persistence.createEntityManagerFactory("name");
           
   ### Create entity manager from emf
-         - var em = emf.createEntityManager();
+         var em = emf.createEntityManager();
 
+## Data type of Entity Class
+
+	- Java primitve types
+	- java.lang.String
+	- Enumerated types
+	- Other entities and/or collections of entities
+	- Embeddable classes
+	- Other serializable types
+		- Wrappers of Java primitive types
+		- java.math.BigInteger
+		- java.math.BigDecimal
+		- java.util.Date
+		- java.util.Calendar
+		- java.sql.Date
+		- java.sql.Time
+		- java.sql.Timestamp
+		- User-defined serializable types
+		- byte[]
+		- Byte[]
+		- char[]
+		- Character[]
 
