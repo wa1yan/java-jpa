@@ -34,7 +34,7 @@ public class MemberTest {
 
 		em.getTransaction().begin();
 		em.persist(member);
-//		em.getTransaction().commit();
+		em.getTransaction().commit();
 		
 	}
 }
