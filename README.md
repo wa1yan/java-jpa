@@ -39,4 +39,6 @@
 		- Byte[]
 		- char[]
 		- Character[]
+		
+### Entity class should implement Serializable Interface coz we need to do this if we used Cache for this entity.
 
