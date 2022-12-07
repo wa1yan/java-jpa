@@ -1,5 +1,6 @@
 package com.waiyanhtet.entity;
 
+import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
@@ -7,6 +8,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Index;
@@ -38,6 +40,7 @@ public class Member implements Serializable {
 	@Column(table = "LOGIN_INFO")
 	private String password;
 	@Column(table = "LOGIN_INFO")
+	@Enumerated(STRING)
 	private Role role;
 
 	@Embedded

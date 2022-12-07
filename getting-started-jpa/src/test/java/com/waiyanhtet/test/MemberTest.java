@@ -29,7 +29,7 @@ public class MemberTest {
 	void test() {
 		Member member = new Member();
 		member.setName("William");
-		
+
 		var em = emf.createEntityManager();
 
 		em.getTransaction().begin();
