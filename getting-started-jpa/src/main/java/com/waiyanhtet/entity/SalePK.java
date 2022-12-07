@@ -3,9 +3,6 @@ package com.waiyanhtet.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
-import javax.persistence.Embeddable;
-
-@Embeddable
 public class SalePK implements Serializable {
 
 	private static final long serialVersionUID = 1L;
