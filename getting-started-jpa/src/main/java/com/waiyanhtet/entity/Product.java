@@ -5,12 +5,19 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.ElementCollection;
+import javax.persistence.CollectionTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapKeyColumn;
+import javax.persistence.MapKeyEnumerated;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "PRODUCT")
 public class Product implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -22,9 +29,16 @@ public class Product implements Serializable {
 	private String category;
 
 	@ElementCollection
+	@CollectionTable(name = "PRODUCT_PRICE", 
+			joinColumns = @JoinColumn(name = "product", referencedColumnName = "id")
+	)
+	@MapKeyColumn(name ="type")
+	@MapKeyEnumerated(EnumType.STRING)
 	private Map<PriceType, Integer> price;
 	
 	@ElementCollection
+	@CollectionTable(name = "PRODUCT_TAGS", 
+			joinColumns = @JoinColumn(name = "product", referencedColumnName = "id"))
 	private List<String> tags;
 
 	public enum PriceType {
