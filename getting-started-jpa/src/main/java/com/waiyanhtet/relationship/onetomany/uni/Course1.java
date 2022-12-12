@@ -40,7 +40,7 @@ public class Course1 implements Serializable {
 	private int hours;
 
 	@OneToMany
-	@JoinTable(joinColumns = @JoinColumn(name = "course1_id", referencedColumnName = "id"))
+	@JoinColumn(name = "course_id")
 	private List<Section> section;
 
 	public List<Section> getSection() {
