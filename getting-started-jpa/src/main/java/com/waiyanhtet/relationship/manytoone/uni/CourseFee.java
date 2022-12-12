@@ -1,4 +1,4 @@
-package com.waiyanhtet.relationship;
+package com.waiyanhtet.relationship.manytoone.uni;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
