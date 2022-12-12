@@ -5,10 +5,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "address")
@@ -17,6 +17,7 @@ public class Address implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	private int id;
 	private String address;
 	
@@ -27,8 +28,6 @@ public class Address implements Serializable {
 	private String email;
 	
 	@OneToOne(optional = false)
-	@PrimaryKeyJoinColumn
-	@MapsId
 	private Account account;
 
 	public int getId() {
