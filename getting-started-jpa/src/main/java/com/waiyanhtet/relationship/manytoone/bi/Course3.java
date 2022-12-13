@@ -1,4 +1,4 @@
-package com.waiyanhtet.relationship.onetomany.uni;
+package com.waiyanhtet.relationship.manytoone.bi;
 
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.IDENTITY;
@@ -17,8 +17,8 @@ import javax.persistence.Table;
 import com.waiyanhtet.relationship.manytoone.uni.Level;
 
 @Entity
-@Table(name = "course1")
-public class Course1 implements Serializable {
+@Table(name = "course3")
+public class Course3 implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,19 +34,10 @@ public class Course1 implements Serializable {
 
 	@Enumerated(STRING)
 	private Level level;
-
 	private int hours;
 
 	@OneToMany(mappedBy = "course")
-	private List<Section> section;
-
-	public List<Section> getSection() {
-		return section;
-	}
-
-	public void setSection(List<Section> section) {
-		this.section = section;
-	}
+	private List<CourseFee3> courseFee;
 
 	public int getId() {
 		return id;
@@ -86,6 +77,14 @@ public class Course1 implements Serializable {
 
 	public void setHours(int hours) {
 		this.hours = hours;
+	}
+
+	public List<CourseFee3> getCourseFee() {
+		return courseFee;
+	}
+
+	public void setCourseFee(List<CourseFee3> courseFee) {
+		this.courseFee = courseFee;
 	}
 
 }

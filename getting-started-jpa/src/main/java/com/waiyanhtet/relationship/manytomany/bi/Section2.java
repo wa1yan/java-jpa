@@ -1,20 +1,26 @@
-package com.waiyanhtet.relationship.onetomany.uni;
+package com.waiyanhtet.relationship.manytomany.bi;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import com.waiyanhtet.relationship.onetoone.uni.Account;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 
 @Entity
-@Table(name = "class")
-public class Section implements Serializable {
+@Table(name = "class2")
+public class Section2 implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -33,16 +39,11 @@ public class Section implements Serializable {
 
 	private double months;
 
-	@ManyToOne
-	private Course1 course;
-
-	public Course1 getCourse() {
-		return course;
-	}
-
-	public void setCourse(Course1 course) {
-		this.course = course;
-	}
+	@ManyToMany
+	@JoinTable(name = "class_teacher2",
+			joinColumns = @JoinColumn(name = "class_id"),
+			inverseJoinColumns = @JoinColumn(name = "teacher_id"))
+	private List<Account> teachers;
 
 	public int getId() {
 		return id;
@@ -82,6 +83,14 @@ public class Section implements Serializable {
 
 	public void setMonths(double months) {
 		this.months = months;
+	}
+
+	public List<Account> getTeachers() {
+		return teachers;
+	}
+
+	public void setTeachers(List<Account> teachers) {
+		this.teachers = teachers;
 	}
 
 }
